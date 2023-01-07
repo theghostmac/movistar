@@ -19,10 +19,23 @@ Movie metadata are stored separately from the rating data.
 - Store the rating record with: ID of user giving the rating, type of record, ID of record, rating value
 - Get the aggregated rating for a record by its ID and type.
 
-### Service Implementation
+## Service Implementation
 * [ ] Movie metadata service (can evolve) -> metadata
 * [ ] Rating service -> rating
 * [ ] Movie service (can evolve) -> movie
+
+## Components of Each Service
+- `controller`: business logic
+- `gateway`: logic for interacting with other services
+- `handler`: API handlers
+- `repository`: database logic.
+
+### Movie metadata service
+Has
+- API
+- Database
+- No interaction
+- Data model type
 
 ## Add to changelog.md
 - support for rating deletion
