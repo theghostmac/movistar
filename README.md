@@ -45,6 +45,14 @@ Has:
 - Data model type (controller)
 - cmd
 
+### Movie service
+Has:
+- API (handler)
+- No Database
+- Interacts with metadata service and rating service (gateway)
+- Data model type, of movie details (controller)
+- cmd
+
 ## Add to changelog.md
 - support for rating deletion
 
