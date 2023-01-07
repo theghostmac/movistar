@@ -45,3 +45,27 @@ func (g *Gateway) GetAggregatedRating(ctx context.Context, recordID model.Record
 	}
 	return v, nil
 }
+
+// PutRating creates a rating/
+func (g *Gateway) PutRating(ctx context.Context, recordID model.RecordID, recordType model.RecordType, rating *model.Rating) error {
+	request, err := http.NewRequest(http.MethodPut, g.addr+"/rating", nil)
+	if err != nil {
+		return err
+	}
+	request = request.WithContext(ctx)
+	values := request.URL.Query()
+	values.Add("id", string(recordID))
+	values.Add("type", fmt.Sprintf("%v", recordType))
+	values.Add("userID", string(rating.UserID))
+	values.Add("value", fmt.Sprintf("%v", rating.Value))
+	request.URL.RawQuery = values.Encode()
+	response, err := http.DefaultClient.Do(request)
+	if err != nil {
+		return err
+	}
+	defer response.Body.Close()
+	if response.StatusCode/100 != 2 {
+		return fmt.Errorf("non-2xx response: %v", response)
+	}
+	return nil
+}
