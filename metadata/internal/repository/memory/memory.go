@@ -1,3 +1,10 @@
+/*
+this package hash a memory.Repository function for ease of reference.
+there is a New, Get, and Put function in the package for use in the business logic layer.
+Get and Put accepts context and does so as the first argument, which is idiomatic Go code.
+the sync.RWMutex structure is used to protect against concurrent writes and reads operations.
+*/
+
 package memory
 
 import (
@@ -37,5 +44,4 @@ func (r *Repository) Put(_ context.Context, id string, metadata *model.Metadata)
 	defer r.Unlock()
 	r.data[id] = metadata
 	return nil
-
 }

@@ -31,11 +31,19 @@ Movie metadata are stored separately from the rating data.
 - `repository`: database logic.
 
 ### Movie metadata service
-Has
+Has:
 - API
 - Database
 - No interaction
 - Data model type
+
+### Rating service 
+Has:
+- API (handler)
+- Database (repository)
+- No interaction (nil)
+- Data model type (controller)
+- cmd
 
 ## Add to changelog.md
 - support for rating deletion
